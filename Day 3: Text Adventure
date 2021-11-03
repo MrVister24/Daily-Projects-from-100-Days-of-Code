@@ -1,0 +1,57 @@
+print('''
+ ,,
+`""*$b..
+     ""*$o.
+         "$$o.
+           "*$$o.
+              "$$$o.
+                "$$$$bo...       ..o:
+                  "$$$$$$$$booocS$$$    ..    ,.
+               ".    "*$$$$SP     V$o..o$$. .$$$b
+                "$$o. .$$$$$o. ...A$$$$$$$$$$$$$$b
+          ""bo.   "*$$$$$$$$$$$$$$$$$$$$P*$$$$$$$$:
+             "$$.    V$$$$$$$$$P"**""*"'   VP  * "l
+               "$$$o.4$$$$$$$$X
+                "*$$$$$$$$$$$$$AoA$o..oooooo..           .b
+                       .X$$$$$$$$$$$P""     ""*oo,,     ,$P
+                      $$P""V$$$$$$$:    .        ""*****"
+                    .*"    A$$$$$$$$o.4;      .
+                         .oP""   "$$$$$$b.  .$;
+                                  A$$$$$$$$$$P
+                                  "  "$$$$$P"
+                                      $$P*"
+                                     .$"
+                                     "
+''')
+print("Welcome to The Rise of the Dragon.")
+print("Your mission is to find and slay the dragon.") 
+
+#https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=Treasure%20Island%20Conditional.drawio#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1oDe4ehjWZipYRsVfeAx2HyB7LCQ8_Fvi%26export%3Ddownload
+
+#Write your code below this line 👇
+
+print("You awake to find yourself in Vastria. A world that hasn't had dragons in it for over a millenia. But there have been reports of dragons in the lands recently. You first find yourself in a tavern. You can pay to stay the night and awaken to start your adventure or you can gamble and drink the night away.")
+awaken = input("Stay or Gamble? \n").lower()
+
+if awaken == "stay":
+  print("\nCongratulations, your adventure starts now!")
+  print("Now that you are well rested, you're first adventure is to go find a dragon in the mountains. When you leave the inn, you see that there is a huge dragon to the west in the mountains. You saddle up and start out of town. As you approach the base of the mountains you see a path that looks to be well ridden and an owlbear in the cave to the south. What do you do?")
+  mountain = input("Path or Owlbear?\n").lower()
+
+  if mountain == "path":
+    print("\nYou chose wisely since this is the ultimate goal!")
+    print("As you continue up the mountain, the dragon gets larger and larger. You feel butterflies in your belly. You are both nervous and excited of the fight ahead. When you finally reach the pinnacle of the mountain, you are faced with a choice. Should you strike with your dragonslayer greatsword, cast a fireball on a red dragon, or talk to it about its feelings?")
+    dragon = input("Greatsword, Fireball, or Talk?\n").lower()
+
+    if dragon == "greatsword":
+      print("You have successfully slain the red dragon that has been terrorizing the town and the surrounding area! You are the true hero of the land!")
+    elif dragon == "fireball":
+      print("Really, a fireball on a red dragon!? You deserve what's coming to you after that.")
+    elif dragon == "talk":
+      print("You're going to try to talk to a dragon? Admirable, foolish, but admirable.")
+    else:
+      print("The dragon eats you!")
+  else:
+    print("As you approach the Owlbear, you see that it's not just one, but five. This fight ended poorly for you.")
+else:
+  print("You're clearly not an adventurer. You should stay home.")
