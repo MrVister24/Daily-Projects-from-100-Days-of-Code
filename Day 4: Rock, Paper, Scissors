@@ -1,0 +1,92 @@
+import random
+
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
+
+paper = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
+
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+
+game_images = [rock, paper, scissors]
+
+user_choice = int(input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors.\n"))
+print(game_images[user_choice])
+
+computer_choice = random.randint(0, 2)
+print("Computer chose:")
+print(game_images[computer_choice])
+
+if user_choice >= 3 or user_choice < 0: 
+  print("You typed an invalid number, you lose!") 
+elif user_choice == 0 and computer_choice == 2:
+  print("You win!")
+elif computer_choice == 0 and user_choice == 2:
+  print("You lose")
+elif computer_choice > user_choice:
+  print("You lose")
+elif user_choice > computer_choice:
+  print("You win!")
+elif computer_choice == user_choice:
+  print("It's a draw")
+  
+#my original code
+#player = input("What do you choose: rock, paper, or scissors? ")
+
+# if player == "rock":
+#   print(rock)
+# elif player == "scissors":
+#   print(scissors)
+# elif player == "paper":
+#   print(paper)
+
+# computer = ["rock", "paper", "scissors"]
+# comp_choices = len(computer)
+# random_choice = random.randint(0, comp_choices - 1)
+# comp_decide = computer[random_choice]
+
+# print("The computer has chosen " + comp_decide)
+# if comp_decide == "rock":
+#   print(rock)
+# elif comp_decide == "scissors":
+#   print(scissors)
+# elif comp_decide == "paper":
+#   print(paper)
+
+# if player == "rock" and comp_decide == "scissors":
+#   print("You win!")
+# if player == "scissors" and comp_decide == "paper":
+#   print("You win!")
+# if player == "paper" and comp_decide == "rock":
+#   print("You win!")
+# if player == "rock" and comp_decide == "paper":
+#   print("You lose!")
+# if player == "scissors" and comp_decide == "rock":
+#   print("You lose!")
+# if player == "paper" and comp_decide == "scissors":
+#   print("You lose!")
+# if player == "rock" and comp_decide == "rock":
+#   print("It's a draw!")
+# if player == "scissors" and comp_decide == "scissors":
+#   print("It's a draw!")
+# if player == "paper" and comp_decide == "paper":
+#   print("It's a draw!")
