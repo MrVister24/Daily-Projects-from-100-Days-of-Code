@@ -1,0 +1,87 @@
+############### Our Blackjack House Rules #####################
+
+## The deck is unlimited in size. 
+## There are no jokers. 
+## The Jack/Queen/King all count as 10.
+## The the Ace can count as 11 or 1.
+## Use the following list as the deck of cards:
+## cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+## The cards in the list have equal probability of being drawn.
+## Cards are not removed from the deck as they are drawn.
+## The computer is the dealer.
+
+import random
+from replit import clear
+from art import logo
+
+def deal_card():
+  """Returns a random card from the deack."""
+  cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+  card = random.choice(cards)
+  return card
+
+def calculate_score(cards):
+  """This will calculate the score of the given cards."""
+  return sum(cards)
+  if sum(cards) == 21 and len(cards) == 2:
+    return 0
+  elif sum(cards) > 21 and 11 in cards:
+    cards.remove(11)
+    cards.append(1)
+  return user_score
+
+def play_game():
+  print(logo)
+  user_cards = []
+  computer_cards = []
+  is_game_over = False
+  
+  for _ in range(2):
+    """This will give 2 cards to the player and the computer."""
+    user_cards.append(deal_card())
+    computer_cards.append(deal_card())
+  
+  while not is_game_over:
+    """This will calculate and display the opening hands."""
+    user_score = calculate_score(user_cards)
+    computer_score = calculate_score(computer_cards)
+    print(f" You were dealt: {user_cards}\n Your score is: {user_score}.")
+    print(f" The computer's first card is: {computer_cards[0]}.")
+    
+    if user_score == 0 or computer_score == 0 or user_score > 21:
+      is_game_over == True
+    else:
+      user_should_deal = input("Would you like to draw another card? 'y' or 'n': ")  
+      if user_should_deal == "y":
+        user_cards.append(deal_card())
+      else:
+        is_game_over = True
+  
+  while computer_score != 0 and computer_score < 17:
+    computer_cards.append(deal_card())
+    computer_score = calculate_score(computer_cards)
+    print(f" The computer's cards are: {computer_cards} totalling {computer_score}.")
+  
+  def compare(user_score, computer_score):
+    """This is where the scores are compared and displayed with the outcome."""
+    if user_score == computer_score:
+      return f"The computer got {computer_score} with {computer_cards}.\n It's a draw."
+    elif user_score == 0:
+      return "You got a Blackjack. You win"
+    elif computer_score == 0:
+      return "The computer got a Blackjack, you lose."
+    elif user_score > 21:
+      return "You Lose."
+    elif computer_score > 21:
+      return "You Win."
+    elif user_score < computer_score:
+      return f"The computer got {computer_score} with {computer_cards}.\n Computer Wins."
+    elif user_score > computer_score:
+      return f"The computer got {computer_score} with {computer_cards}.\n You Win."
+  
+  print(compare(user_score, computer_score))
+
+while input("Would you like to play a game of Blackjack? 'y' or 'n': ") == "y":
+  """This will clear the art and play the game over and over if the user keep pressing y."""
+  clear()
+  play_game()
