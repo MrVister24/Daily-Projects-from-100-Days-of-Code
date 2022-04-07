@@ -1,0 +1,92 @@
+import random
+
+def deal_card():
+  cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+  card = random.choice(cards)
+  return card
+
+def calculate_score(cards):
+  if sum(cards) == 21 and len(cards) == 2:
+    return 0
+  if sum(cards) > 21 and 11 in cards:
+    cards.remove(11)
+    cards.append(1)
+  return sum(cards)
+
+user_cards = []
+computer_cards = []
+is_game_over = False
+
+for _ in range(2):
+  user_cards.append(deal_card())
+  computer_cards.append(deal_card())
+
+user_score = calculate_score(user_cards)
+computer_score = calculate_score(computer_cards)
+print(f"Your cards are: {user_cards} and your score is: {user_score}")
+print(f"The computer's first card is: {computer_cards[0]}.")
+
+if user_score == 0 or user_score > 21:
+  is_game_over = True
+else:
+  user_done = False
+  while not user_done:
+    another_card = input("Would you like to hit? 'y' or 'n'\n")
+    if another_card == "y":
+      user_cards.append(deal_card())
+      user_score = calculate_score(user_cards)
+      print(f"Here are your cards: {user_cards} and your new score is: {user_score}")
+      if user_score > 21:
+        print("You bust.")
+        is_game_over = True
+        user_done = True
+    else:
+      print("Now it's the computer's turn.")
+      user_done = True
+      computer_done = False
+      while not computer_done:
+        if computer_score < 17 and computer_score !=0:
+          computer_cards.append(deal_card())
+          computer_score = calculate_score(computer_cards)
+        else:
+          print(f"The computer's cards are: {computer_cards} and the computer's score is: {computer_score}.")
+          computer_done = True
+
+def compare(user_score, computer_score):
+  if user_score == computer_score:
+    print(f"Your score: {user_score}")
+    print(f"Computer score: {computer_score}")
+    return "It's a draw."
+    is_game_over = True
+  elif computer_score == 0:
+    print(f"Your score: {user_score}")
+    print(f"Computer score: 21")
+    return "Computer has Blackjack, you lose."
+    is_game_over = True
+  elif user_score == 0:
+    print(f"Your score: 21")
+    print(f"Computer score: {computer_score}")
+    return "You have Blackjack, you win."
+    is_game_over = True
+  elif user_score > 21:
+    print(f"Your score: {user_score}")
+    print(f"Computer score: {computer_score}")
+    return "You bust."
+    is_game_over = True
+  elif computer_score > 21:
+    print(f"Your score: {user_score}")
+    print(f"Computer score: {computer_score}")
+    return "Computer bust, you win."
+    is_game_over = True
+  elif user_score > computer_score:
+    print(f"Your score: {user_score}")
+    print(f"Computer score: {computer_score}")
+    return "You win."
+    is_game_over = True
+  else:
+    print(f"Your score: {user_score}")
+    print(f"Computer score: {computer_score}")
+    return "You lose."
+    is_game_over = True
+    
+print(compare(user_score, computer_score))
